@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Melú e Againe">
+	<title>Contactos — Restaurante</title>
+	<link rel="stylesheet" href="_css/style.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container header-inner">
+			<a class="brand" href="index.html">Restaurante</a>
+			<button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Abrir menu">▤</button>
+			<nav id="siteNav" class="site-nav" aria-label="Navegação principal">
+				<ul>
+					<li><a href="index.html">Início</a></li>
+					<li><a href="prato.html">Pratos</a></li>
+					<li><a href="mesa.html">Reservas</a></li>
+					<li><a href="contactos.html">Contactos</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main class="container">
+		<h1>Contactos</h1>
+		<p class="muted">Telefone, e-mail e localização.</p>
+
+		<section class="card" style="margin-top:1rem;">
+			<h3>Telefone</h3>
+			<p>+258 82 123 4567</p>
+			<h3>E-mail</h3>
+			<p>reservas@restaurante.exemplo</p>
+			<h3>Morada</h3>
+			<p>Rua Exemplo, 123 — Cidade</p>
+		</section>
+
+		<section class="card" style="margin-top:1rem;">
+			<h3>Formulário de Contacto</h3>
+			<form id="contactForm" class="form" aria-label="Formulário de contacto">
+				<div class="form-row">
+					<label for="c_name">Nome</label>
+					<input id="c_name" name="name" type="text" required placeholder="Nome completo">
+				</div>
+				<div class="form-row">
+					<label for="c_phone">Telefone (Moçambique)</label>
+					<input id="c_phone" name="phone" type="tel" required pattern="^(\\+258\\s?)?[0-9\\s-]{9,15}$" placeholder="+258 82 123 4567">
+				</div>
+				<div class="form-row">
+					<label for="c_email">E‑mail</label>
+					<input id="c_email" name="email" type="email" placeholder="seu@exemplo.com">
+				</div>
+				<div class="form-row">
+					<label for="message">Mensagem</label>
+					<textarea id="message" name="message" rows="4" required placeholder="Escreva a sua mensagem..."></textarea>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn primary">Enviar</button>
+					<button type="reset" class="btn">Limpar</button>
+				</div>
+				<div id="contactMessage" class="form-message" role="status" aria-live="polite"></div>
+			</form>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<p>© <span id="year"></span> Restaurante — Melú e Againe</p>
+		</div>
+	</footer>
+
+	<script src="_js/scritpt.js" defer></script>
+</body>
+</html>
+

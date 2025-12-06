@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Melú e Againe">
+	<title>Reservas — Restaurante</title>
+	<link rel="stylesheet" href="_css/style.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container header-inner">
+			<a class="brand" href="index.html">Restaurante</a>
+			<button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Abrir menu">▤</button>
+			<nav id="siteNav" class="site-nav" aria-label="Navegação principal">
+				<ul>
+					<li><a href="index.html">Início</a></li>
+					<li><a href="prato.html">Pratos</a></li>
+					<li><a href="mesa.html">Reservas</a></li>
+					<li><a href="contactos.html">Contactos</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main class="container">
+		<h1>Reservar Mesa</h1>
+		<p class="muted">Faça a sua reserva para garantir o seu lugar.</p>
+
+		<section class="card" style="margin-top:1rem;">
+			<h3>Formulário de Reservas</h3>
+			<form id="reservationForm" class="form" aria-label="Formulário de reservas">
+				<div class="form-row">
+					<label for="name">Nome</label>
+					<input id="name" name="name" type="text" required placeholder="Nome completo">
+				</div>
+
+				<div class="form-row">
+					<label for="phone">Telefone</label>
+					<input id="phone" name="phone" type="tel" required pattern="^(\\+258\\s?)?[0-9\\s-]{9,15}$" placeholder="+258 82 123 4567">
+				</div>
+
+				<div class="form-row">
+					<label for="email">E‑mail</label>
+					<input id="email" name="email" type="email" placeholder="seu@exemplo.com">
+				</div>
+
+				<div class="form-grid">
+					<div class="form-row">
+						<label for="date">Data</label>
+						<input id="date" name="date" type="date" required>
+					</div>
+					<div class="form-row">
+						<label for="time">Hora</label>
+						<input id="time" name="time" type="time" required>
+					</div>
+					<div class="form-row">
+						<label for="people">Pessoas</label>
+						<input id="people" name="people" type="number" min="1" max="20" value="2" required>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<label for="notes">Observações (opcional)</label>
+					<textarea id="notes" name="notes" rows="3" placeholder="Ex.: preferência por mesa junto à janela"></textarea>
+				</div>
+
+				<div class="form-actions">
+					<button type="submit" class="btn primary">Enviar Reserva</button>
+					<button type="button" id="formReset" class="btn">Limpar</button>
+				</div>
+
+				<div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+			</form>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<p>© <span id="year"></span> Restaurante — Melú e Againe</p>
+		</div>
+	</footer>
+
+	<script src="_js/scritpt.js" defer></script>
+</body>
+</html>
+
