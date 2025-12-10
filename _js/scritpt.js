@@ -146,5 +146,68 @@
 		});
 	}
 
+	// --- Navigation active link marking ---
+	function markActiveNav(){
+		try{
+			const navLinks = document.querySelectorAll('.site-nav a');
+			const current = window.location.pathname.split('/').pop() || 'index.html';
+			navLinks.forEach(a=>{
+				const href = a.getAttribute('href');
+				if(!href) return;
+				// Compare filenames
+				const file = href.split('/').pop();
+				if(file === current) a.classList.add('active'); else a.classList.remove('active');
+			});
+		}catch(e){/* ignore */}
+	}
+	markActiveNav();
+
+	// --- Simple lightbox for gallery images ---
+	function initGalleryLightbox(){
+		const imgs = document.querySelectorAll('.gallery .gallery-img');
+		if(!imgs || imgs.length===0) return;
+
+		// create modal
+		let lb = document.querySelector('.lightbox');
+		if(!lb){
+			lb = document.createElement('div'); lb.className='lightbox'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-hidden','true');
+			lb.innerHTML = '<div class="lightbox-inner" tabindex="-1"><button class="lightbox-close" aria-label="Fechar">✕</button><div class="lightbox-media"></div><div class="lightbox-caption"></div></div>';
+			document.body.appendChild(lb);
+		}
+
+		const media = lb.querySelector('.lightbox-media');
+		const captionEl = lb.querySelector('.lightbox-caption');
+		const closeBtn = lb.querySelector('.lightbox-close');
+
+		function open(src, caption){
+			media.innerHTML = '';
+			const img = document.createElement('img'); img.src = src; img.alt = caption || ''; img.onload = ()=>{};
+			media.appendChild(img);
+			captionEl.textContent = caption || '';
+			lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+			// focus for accessibility
+			lb.querySelector('.lightbox-inner').focus();
+		}
+
+		function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); media.innerHTML=''; }
+
+		imgs.forEach(i=>{
+			i.addEventListener('click', function(e){
+				const src = i.getAttribute('src') || (i.querySelector && i.querySelector('img') && i.querySelector('img').src);
+				const fig = i.closest('figure');
+				const caption = fig ? (fig.querySelector('figcaption') ? fig.querySelector('figcaption').textContent : i.getAttribute('alt')) : i.getAttribute('alt');
+				open(src, caption);
+			});
+			i.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); i.click(); } });
+			i.setAttribute('tabindex','0');
+		});
+
+		// close handlers
+		closeBtn.addEventListener('click', close);
+		lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+		document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+	}
+	initGalleryLightbox();
+
 })();
 
