@@ -72,8 +72,8 @@ body{font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvet
 
 /* Specific hero backgrounds */
 .hero{background-size:cover;background-position:center;background-repeat:no-repeat}
-.hero.hero--index{background-image:linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.12)), url('../_imagens/pastelaria.jpg');color:#fff}
-.hero.hero--prato{background-image:linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.12)), url('../_imagens/macarrao.jpg');color:#fff}
+.hero.hero--index{background-image:linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.12)), url('../_imagens/top.jpg');color:#fff}
+.hero.hero--prato{background-image:linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.12)), url('../_imagens/prato.jpg');color:#fff}
 .hero.hero--index .container, .hero.hero--prato .container{position:relative;z-index:2}
 
 /* Card image styles */
