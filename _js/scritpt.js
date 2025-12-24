@@ -162,6 +162,14 @@
 	}
 	markActiveNav();
 
+	// --- Image expand/shrink helpers (used by inline handlers) ---
+	function expandImage(el){ try{ if(el && el.classList) el.classList.add('card-img--full'); }catch(e){} }
+	function shrinkImage(el){ try{ if(el && el.classList) el.classList.remove('card-img--full'); }catch(e){} }
+
+	// expose helpers to global scope so inline attributes can call them
+	window.expandImage = expandImage;
+	window.shrinkImage = shrinkImage;
+
 	// --- Simple lightbox for gallery images ---
 	function initGalleryLightbox(){
 		const imgs = document.querySelectorAll('.gallery .gallery-img');
